@@ -5,6 +5,8 @@ import Robot from "./components/Robot";
 import styles from "./App.module.css";
 import ShoppingCart from "./components/ShoppingCart";
 import robot from "./components/Robot";
+import robotDiscount from "./components/RobotDiscount";
+import RobotDiscount from "./components/RobotDiscount";
 interface Props { }
 
 interface State {
@@ -58,7 +60,11 @@ const App: React.FC = (props) => {
             {!loading ?
                 <div className={styles.robotList}>
                     {robotGallery.map((r, index) => (
-                        <Robot id={r.id} email={r.email} name={r.name} key={index}/>
+                        index % 2 == 0 ? (
+                            <RobotDiscount id={r.id} email={r.email} name={r.name} key={index}/>
+                        ) : (
+                            <Robot id={r.id} email={r.email} name={r.name} key={index}/>
+                        )
                     ))}
                 </div>
                 : <h2>loading the page</h2>
