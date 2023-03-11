@@ -11,11 +11,12 @@ const defaultContextValue: AppStateValue = {
 }
 
 export const appContext = React.createContext(defaultContextValue);
+
 export const appSetStateContext = React.createContext<
     React.Dispatch<React.SetStateAction<AppStateValue>> | undefined
 >(undefined);
 
-export const AppStateProvider: React.FC = (props) => {
+export const AppStateProvider: React.FC<React.PropsWithChildren<{}>> = (props) => {
     const [state, setState] = useState(defaultContextValue)
     return (
         <appContext.Provider value={state}>
